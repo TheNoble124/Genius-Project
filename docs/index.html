@@ -178,9 +178,9 @@
 
         function giveHint() {
             if (!hintGiven) {
-                let wordToHint = currentWord;
-                let halfWord = wordToHint.slice(0, Math.floor(wordToHint.length / 2)) + '...';
-                document.getElementById("feedback").textContent = `Hint: ${halfWord}`;
+                let translationToHint = words[currentWord];
+                let halfTranslation = translationToHint.slice(0, Math.floor(translationToHint.length / 2)) + '...';
+                document.getElementById("feedback").textContent = `Hint: ${halfTranslation}`;
                 hintGiven = true;
             }
         }
