@@ -101,6 +101,7 @@
             <input type="text" id="answer" placeholder="Enter translation">
             <button onclick="checkAnswer()">Submit</button>
             <button onclick="giveHint()">Hint</button>
+            <button onclick="toggleReversed()">Reversed Translation</button>
             <p id="feedback"></p>
         </div>
 
@@ -116,7 +117,7 @@
         let keys = [];
         let answeredCorrectly = new Set();
         let currentWord = "";
-        let isReversed = false;
+        let isReversed = false; // Flag to toggle between word-to-translation or translation-to-word
         let hintGiven = false;
         
         function addWord() {
@@ -185,6 +186,11 @@
             }
         }
 
+        function toggleReversed() {
+            isReversed = !isReversed;
+            nextQuestion(); // Reload the next question with the reversed translation toggle
+        }
+
         function playAgain() {
             // Reset game with the same words
             answeredCorrectly.clear();
@@ -201,11 +207,6 @@
             document.getElementById("setup").style.display = "block";
             document.getElementById("count").textContent = `Words added: 0/20`;
             document.getElementById("start").disabled = true;
-        }
-        
-        function toggleReverse() {
-            isReversed = !isReversed;
-            nextQuestion();
         }
     </script>
 </body>
